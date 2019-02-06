@@ -8,7 +8,10 @@ from config import BASE_URL
 
 
 
+
 def scrape_to_csv():
+    print_yellow_bold('How many seconds between every request ? \n *number must be integer')
+    seconds = int(input('-> '))
     with open('quotes.csv', 'w') as file:
                 fields_name = ['text', 'author', 'author_bio_link']
                 writer = DictWriter(file, fieldnames=fields_name)
@@ -29,7 +32,7 @@ def scrape_to_csv():
                 writer.writerow({'text': text, 'author': author, 'author_bio_link': author_link})
         next_btn = parser.find(class_="next")
         page_number = next_btn.find("a")['href'] if next_btn else None
-        sleep(1)
+        sleep(seconds)
     print_purple_bold('Do you want to play the guessing game (Y/N)?')
     play_game_answer = input('-> ').lower()
 

@@ -14,8 +14,10 @@ subprocess.check_call(command.split())
 
 
 print_green_bold(f'Do you want to make a new scrape to {BASE_URL} (Y/N) ?')
-scrape_answer = input('-> ').lower()
+scrape_answer = ''
 
+while scrape_answer not in ('y', 'yes', 'n', 'no'):
+    scrape_answer = input('-> ').lower()
 if scrape_answer in ('y', 'yes', 'yeah'):
     scrape_to_csv()
 else:
